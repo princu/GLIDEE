@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta name="description" content="Glide through Andheri. Compare faster, more comfortable and safety-focused journeys with fare breakdowns and crowd reports." />
+    <meta name="theme-color" content="#087f73" />
+    <title>Glide | Glide through Andheri</title>
+    <link rel="icon" type="image/png" href="assets/glide-wing.png" />
+    <link rel="apple-touch-icon" href="assets/glide-wing.png" />
+    <link rel="stylesheet" href="vendor/leaflet/leaflet.css" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <div class="brand-lockup">
+          <div class="brand-mark" aria-hidden="true"><img src="assets/glide-wing.png" alt="" width="44" height="44" /></div>
+          <div>
+            <p class="eyebrow brand-tagline">Glide through Andheri</p>
+            <h1>Glide</h1>
+          </div>
+        </div>
+        <div class="status-strip" aria-label="Demo commute status">
+          <span class="status-dot"></span>
+          <span id="serviceStatus">Local sample data</span>
+        </div>
+      </header>
+
+      <p class="data-notice" role="note"><strong>Submission prototype.</strong> Fares, departures, typical crowds and safety scores are illustrative, not verified live data.</p>
+
+      <section class="planner-panel" aria-label="Route planner">
+        <div class="field-group search-group">
+          <label for="fromSearch">From</label>
+          <div class="search-field">
+            <input id="fromSearch" class="search-input" type="search" autocomplete="off" spellcheck="false" placeholder="Search starting point" aria-autocomplete="list" aria-controls="fromSuggestions" />
+            <div id="fromSuggestions" class="suggestions" role="listbox"></div>
+          </div>
+        </div>
+        <button class="swap-button" id="swapButton" type="button" title="Swap origin and destination" aria-label="Swap origin and destination">
+          <span aria-hidden="true">&lt;-&gt;</span>
+        </button>
+        <div class="field-group search-group">
+          <label for="toSearch">To</label>
+          <div class="search-field">
+            <input id="toSearch" class="search-input" type="search" autocomplete="off" spellcheck="false" placeholder="Search destination" aria-autocomplete="list" aria-controls="toSuggestions" />
+            <div id="toSuggestions" class="suggestions" role="listbox"></div>
+          </div>
+        </div>
+        <div class="field-group compact">
+          <span class="field-label">Leave</span>
+          <div class="time-options" id="timeOptions" aria-label="Departure time">
+            <button class="time-button" type="button" data-time="now">Now</button>
+            <button class="time-button" type="button" data-time="morning">8:30</button>
+            <button class="time-button" type="button" data-time="midday">1:00</button>
+            <button class="time-button" type="button" data-time="evening">6:30</button>
+            <button class="time-button" type="button" data-time="night">10:30</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="mode-grid" id="modeGrid" aria-label="Route choices"></section>
+
+      <section class="workbench">
+        <div class="map-panel" aria-label="Andheri route map">
+          <div class="map-header">
+            <div>
+              <p class="eyebrow">Route view</p>
+              <h2 id="mapTitle">Andheri movement map</h2>
+            </div>
+            <div class="map-legend">
+              <span><i class="line fastest"></i>Fast</span>
+              <span><i class="line comfort"></i>Comfort</span>
+              <span><i class="line safest"></i>Safe</span>
+            </div>
+          </div>
+          <div id="routeMap" class="route-map" role="application" aria-label="Real OpenStreetMap route map"></div>
+          <p class="map-caption">Route lines are illustrative connections, not street-following navigation.</p>
+        </div>
+
+        <aside class="detail-panel" aria-label="Selected route details">
+          <div class="detail-header">
+            <p class="eyebrow" id="routeModeLabel">Fastest</p>
+            <h2 id="routeTitle">Route details</h2>
+          </div>
+
+          <div class="metric-row" id="metricRow"></div>
+
+          <div class="segment-list" id="segmentList"></div>
+
+          <div class="insight-band" id="insightBand"></div>
+
+          <div class="ride-fallback">
+            <div>
+              <p class="eyebrow">No public transport?</p>
+              <h3>Try a private ride</h3>
+              <p>Open Rapido for bike, auto, or cab options near your pickup point.</p>
+            </div>
+            <a id="rapidoLink" class="rapido-button" href="https://www.rapido.bike/Home" target="_blank" rel="noreferrer">
+              Open Rapido
+            </a>
+          </div>
+        </aside>
+      </section>
+    </main>
+
+    <script src="vendor/leaflet/leaflet.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
